@@ -76,19 +76,18 @@ def feedback_shavasana():
             # Calculate angle
             angle = calculate_angle(shoulder, hip, knee)
             if 160 <= angle<= 180:
-            # Visualize angle
-                 mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
                                     mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) 
-                  
-                                          
-                                        )
-                
+                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2))
+                cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                 
             else:
                  mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
                                     mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
                                     mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
-                                     )   
+                                     )
+                 cv2.putText(image,"Make your leg straight and keep your hand near your hip.", (3,30), 
+                       cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)   
 
             # Render detections
                        
@@ -158,31 +157,36 @@ def feedback_padmasan():
                 if 90 <= right_hip_angle <= 120 and 90<=left_hip_angle:
                     if 15<=left_knee_angle<= 40 and 15<= right_knee_angle <= 40:
                         if 10<=left_shoulder_angle<=30 and 10<=right_shoulder_angle<=30:
-                            print("Perfect")
+                            cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                        mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                            
                             
                         else:
-                            print("Bring you hand to the side of your leg.")
+                            cv2.putText(image,"Bring you hand to the side of your leg.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                        
                             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
                             
                     else: 
-                        print("Fold you legs.")
-                        
+                        cv2.putText(image,"Keep left leg on top of right and right on top of left.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    
+                    
                         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
                         
                 
                     
                 else :
-                    print("Hip is not straight. Please make it straight.")
+                    cv2.putText(image,"Hip is not straight. Please make it straight and fold your legs.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                
+                
                     mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
                     
             except:
                 pass
@@ -271,37 +275,49 @@ def feedback_vrikasana():
                         
                             if 130<=left_elbow_angle<=180 and 130<=right_elbow_angle<=180:
                     # Visualize angle
+                                cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                                 mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) 
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) 
 
 
-                                                        )
+                                                    )
                             else:
+                                cv2.putText(image,"Take your hand straight up make a namaste.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                            
                                 mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                        mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
-                                        )
+                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
+                                     )
                         else:
                             
+                            cv2.putText(image,"Take your hand straight up make a namaste.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                        
+                            
+          
+                        
                             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                        mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
-                                        )
+                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
+                                     )
                                     
                     
                     else:
-                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                        mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
-                                        )   
+
+                        cv2.putText(image,"Keep your left feat to the side of your right thigh.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
+                                     )   
 
                 # Render detections
                 else:
-                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                        mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
-                                        )           
+                    cv2.putText(image,"Make your right leg straight.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
+                                     )
+                                       
             except:
                 pass
             cv2.imshow('Mediapipe Feed', image)
@@ -377,25 +393,35 @@ def feedback_bhuj():
                     if 130<=right_elbow_angle<= 160:
                     
                         if  130<=right_hip_angle<=160:
+
+                        
+                            cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                        else:
+                            cv2.putText(image,"Bend the upper half of your hip in the upward direction with your thighs still in the ground.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                         
                             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
-                        else:
-                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
                             
-                    else: 
+                            
+                    else:
+                        cv2.putText(image,"Put your palms to the side of your chest.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    
                         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2)) 
+                        
                 
                     
                 else :
+                    cv2.putText(image,"Make sure your legs are straight.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                
                     mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
                     
                 
                 
@@ -480,25 +506,39 @@ def feedback_virbhadra():
                     if 90<=right_knee_angle<= 110:
                     
                         if  60<=right_shoulder_angle<=100 and 60<=left_shoulder_angle<=100:
+
+                            cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                         
                             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                        
+                           
                         else:
+                            cv2.putText(image,"Spread your arms straight towards the side.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                        
                             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
                             
-                    else: 
+                            
+                    else:
+                        cv2.putText(image,"Spread the right leg to the side and take your body towards the right bending your right leg.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    
                         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2)) 
+                       
                 
                     
                 else :
+                    cv2.putText(image,"Make sure your left leg is straight.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                
+                
                     mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                    
                     
                 
                 
@@ -581,23 +621,31 @@ def feedback_tadasana():
     #             if 165 <= left_knee_angle <= 185 or 165 <= right_knee_angle <= 185:
                 if 160 <= right_hip_angle <= 185 and 160<=left_hip_angle<=185:
                     if 60<=right_shoulder_angle<= 95 and 60<= left_shoulder_angle<=95:
-                    
-                    
-                        
-                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
-                        
-                    else: 
+                        cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
-                
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                    
+                    
+                        
+                            
+                    else:
+                        cv2.putText(image,"Take your hands up from the side, lock the fingers and stretch you body upward.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    
+                        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2)) 
+                        
                     
                 else :
+                    
+                    cv2.putText(image,"Stand straight with your legs joined.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                
+                
                     mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                
                     
             except:
                 pass    
