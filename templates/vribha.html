@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Virabhadrasana</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="aos.css" />
+    <!-- it will load fast so i have pasted in file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+	<style>
+    body {
+      background-color: #ffb3b3;
+      color: black;
+    }
+    
+		.container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      height: 400px;
+    }
+    
+    .left {
+      max-width: 800px;
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    
+    .right {
+      max-width: 800px;
+      width: 100%;
+      height: 500px
+      margin-top: 2rem;
+    }
+    
+    img {
+      max-width: 100%;
+      max-height:600px;
+      padding-left: 135px;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      color:red;
+    }
+    
+    p {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+    
+    ol {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+    }
+    
+    ol li {
+      margin-bottom: 1rem;
+    }
+    
+    .practice-btn {
+      background-color: #60a5fa;
+      border: none;
+      border-radius: 0.25rem;
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease-in-out;
+    }
+    
+    .practice-btn:hover,
+    .practice-btn:focus {
+      background-color: #3b82f6;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    
+      .left {
+        width: 50%;
+        padding-right: 2rem;
+      }
+    
+      .right {
+        width: 50%;
+      }
+    }
+    
+	</style>
+  
+  
+
+</head>
+<body style="background-color: red color: blue;">
+  <div class="navbar navbar-expand-lg fixed-top">
+    <a href="\" class="navbar-brand">Yoga</a>
+    <ul class="navbar-nav ml-lg-auto">
+      <li class="nav-item">
+          <a href="\" class="nav-link smoothScroll">Home</a>
+      </li>
+
+      <li class="nav-item">
+          <a href="\#class" class="nav-link smoothScroll">About</a>
+      </li>
+
+      <li class="nav-item">
+          <a href="\#poses" class="nav-link smoothScroll">Poses</a>
+      </li>
+      
+
+      <li class="nav-item">
+          <a href="\#team" class="nav-link smoothScroll">Our Team</a>
+      </li>
+
+     
+
+      <li class="nav-item">
+          <a href="\#contact" class="nav-link smoothScroll">Contacts</a>
+      </li>
+  </ul>
+
+        
+    </div>
+</div>
+  <div class="container">
+    <div class="left">
+      <h1 style="color:green">Virabhadrasana</h1>
+      <p><strong><b style="color:black">Sanskrit:</b>  Virabhadrasana II (veer-ah-bah-DRAHS-anna)
+
+        Virabhadra = the name of a fierce warrior, an incarnation of Shiva, described as having a thousand heads, a thousand eyes, and a thousand feet, wielding a thousand clubs and wearing a tiger’s skin.
+        Virabhadrasana 2 (Warrior 2 Pose), named after Hindu god who incarnated as a human, enhances the strength and stamina of beginner and advanced yogis alike. In the pose, your front knee bends to create a stretch in your hips, your arms engage and extend straight out from your shoulders, and your gaze, or dristhi, remains calm and steady toward your front hand. It is the second of three poses dedicated to Virabhadra.
+        </strong></p>
+      <h2>How to do it:</h2>
+      <ol>
+        <li>Face the long side of your mat with your arms stretched straight out from your shoulders and your feet parallel to each other in a wide stance. You want your ankles approximately beneath your wrists.</li>
+        <li>Turn your right foot and knee to face the front of the mat.</li>
+        <li>Angle your left toes slightly in toward the upper left corner of the mat.</li>
+        <li>Bend your right knee and stack it over your right ankle.</li>
+        <li>Distribute your weight evenly between both legs. Press down through the outer edge of your back foot.</li>
+        <li>Keep the crown of your head stacked over your pelvis and your shoulders over your hips.</li>
+        <li>Reach strongly through both arms toward the front and back of the mat and turn your head to look past your right fingertips.</li>
+      </ol>
+      <button class="practice-btn" id="practise-btn" href="{{ url_for('static', filename='statics/pad.html') }}">Practice Now</button>
+      
+    </div>
+    <div class="right">
+      <img src="{{ url_for('static', filename='assets/Virbhadra.jpg') }}" alt="Virbhadrasana Pose">
+    </div>
+  </div>
+
+  <script>
+    const practiseBtn = document.getElementById('practise-btn');
+    practiseBtn.addEventListener('click', function() {
+      // Change the URL to '/practise'
+    history.pushState({}, '', '/practiseVribha');
+    // Send an AJAX request to your Flask app
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/practiseVribha', true);
+    xhr.send();
+});
+
+  </script>
+  
+</body>
+</html>
+
+

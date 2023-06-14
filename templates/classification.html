@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Geometric business card with CSS Grid</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="aos.css" />
+    <!-- it will load fast so i have pasted in file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='classification.css') }}">
+
+</head>
+<body>
+
+    <div class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a href="\" class="navbar-brand">Yoga</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="\" class="nav-link smoothScroll">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="\#class" class="nav-link smoothScroll">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="\#poses" class="nav-link smoothScroll">Poses</a>
+                    </li>
+                    
+
+                    <li class="nav-item">
+                        <a href="\#team" class="nav-link smoothScroll">Our Team</a>
+                    </li>
+
+                   
+
+                    <li class="nav-item">
+                        <a href="\#contact" class="nav-link smoothScroll">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!-- partial:index.partial.html -->
+<section class="class section style-cards" id="class">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center mb-5">
+                <h6 data-aos="fade-up">Yoga doesnot just change the way you see things, it transforms the person who sees.</h6>
+                <h1 data-aos="fade-up" data-aos-delay="200">ASANA CLASSIFICATION</h1>
+            </div>
+
+            <div class="card-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="desc-3">
+                    <h3 class="mb-2">Classify Via Live Video</h3>
+                    <p>
+                    </p>
+                    <p>
+                        <a class="btn custom-btn bg-color mt-3" id="classification" data-aos="fade-up" data-aos-delay="100"
+                            data-toggle="modal">
+                            OPEN CAMERA</a>
+                    </p>
+                </div>
+                <img src="{{ url_for('static', filename='/assets/tv.png') }}" alt="Yoga" data-aos="fade-up" data-aos-delay="500">
+<video data-aos="fade-up" data-aos-delay="500" autoplay playsinline muted loop>
+<source src="{{ url_for('static', filename='/assets/Pexels Videos 2790143.mp4') }}">
+</video>
+
+            </div>
+            <div class="card-2" data-aos="fade-up" data-aos-delay="200">
+                <img src="{{ url_for('static', filename='/assets/tv.png') }}" alt="Yoga" data-aos="fade-up" data-aos-delay="500">
+                    <video data-aos="fade-up" data-aos-delay="500" autoplay playsinline muted loop>
+                    <source src="{{ url_for('static', filename='/assets/production ID_4612365.mp4') }}">
+                    </video>
+
+
+                <div class="desc-2">
+                    <h3 class="mb-2">CLASSIFICATION OF AVAILABLE VIDEO</h3>
+                    <p>
+                    
+                    <form class="file-upload-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input class = "btn custom-btn bg-color mt-3" type="submit" value="Make Prediction">
+                      </form>
+                    </p>
+                      
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</section>
+<!-- partial -->
+<script>
+    const practiseBtn = document.getElementById('classification');
+    practiseBtn.addEventListener('click', function() {
+      // Change the URL to '/practise'
+    history.pushState({}, '', '/classification');
+    // Send an AJAX request to your Flask app
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/classification', true);
+    xhr.send();
+});
+
+  </script>
+
+
+</body>
+</html>

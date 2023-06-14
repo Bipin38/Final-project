@@ -42,6 +42,14 @@ def calculate_angle(a,b,c):
     return angle 
 
 
+def calculate_distance(a,b):
+    a = np.array(a) # First
+    b = np.array(b) # Mid
+    
+    
+    distance = math.sqrt((a[1]-b[1])*(a[1]-b[1]) + (a[0] - b[0])*(a[0]-b[0]))
+      
+    return distance 
 
 
 
@@ -65,30 +73,34 @@ def feedback_shavasana():
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             image = cv2.resize(image,(600,400))
             # Extract landmarks
+
+            try:
             
-            landmarks = results.pose_landmarks.landmark
+                landmarks = results.pose_landmarks.landmark
 
-            # Get coordinates
-            shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
-            hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
-            knee = [landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].y]
+                # Get coordinates
+                shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
+                hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
+                knee = [landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].y]
 
-            # Calculate angle
-            angle = calculate_angle(shoulder, hip, knee)
-            if 160 <= angle<= 180:
-                mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2))
-                cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-                 
-            else:
-                 mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
-                                     )
-                 cv2.putText(image,"Make your leg straight and keep your hand near your hip.", (3,30), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)   
+                # Calculate angle
+                angle = calculate_angle(shoulder, hip, knee)
+                if 160 <= angle<= 180:
+                    mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                        mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2))
+                    cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    
+                else:
+                    mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                        mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                        mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2) 
+                                        )
+                    cv2.putText(image,"Make your leg straight and keep your hand near your hip.", (3,30), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)   
 
+            except:
+                return ""
             # Render detections
                        
 
@@ -124,7 +136,7 @@ def feedback_padmasan():
             # Recolor back to BGR
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            image = cv2.resize(image,(600,400))
+            image = cv2.resize(image,(1200,600))
             # Extract landmarks
             try:
                 landmarks = results.pose_landmarks.landmark
@@ -205,6 +217,7 @@ def feedback_padmasan():
 
         cap.release()
         cv2.destroyAllWindows()
+        return None
 
 
 
@@ -226,7 +239,7 @@ def feedback_vrikasana():
             # Recolor back to BGR
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            image = cv2.resize(image,(600,400))
+            image = cv2.resize(image,(1200,600))
             # Extract landmarks
             try:
                 landmarks = results.pose_landmarks.landmark
@@ -257,23 +270,23 @@ def feedback_vrikasana():
                 right_knee_angle = calculate_angle(right_hip,right_knee,right_ankle)
                 right_elbow_angle = calculate_angle(right_shoulder, right_elbow,right_wrist)
                 left_elbow_angle = calculate_angle(left_shoulder,left_elbow,left_wrist)
-    #             print(f'left_hip_angle {left_hip_angle}')
-    #             print(f'right_hip_angle {right_hip_angle}')
-    #             print(f'knee left {left_knee_angle}')
-    #             print(f'right_knee_angle {right_knee_angle}')
-    #             print(f'right_shoulder_angle {right_shoulder_angle}')
-    #             print(f'left_shoulder_angle {left_shoulder_angle}')
-    #             print(f'right_elbow_angle {right_elbow_angle}')
-    #             print(f'left_elbow_angle {left_elbow_angle}')
+                # print(f'left_hip_angle {left_hip_angle}')
+                # print(f'right_hip_angle {right_hip_angle}')
+                # print(f'knee left {left_knee_angle}')
+                # print(f'right_knee_angle {right_knee_angle}')
+                # print(f'right_shoulder_angle {right_shoulder_angle}')
+                # print(f'left_shoulder_angle {left_shoulder_angle}')
+                # print(f'right_elbow_angle {right_elbow_angle}')
+                # print(f'left_elbow_angle {left_elbow_angle}')
                 
                 
                 
     #             if 165 <= left_knee_angle <= 185 or 165 <= right_knee_angle <= 185:
                 if 165 <= right_knee_angle <= 185:
                     if 30<=left_knee_angle<= 70:
-                        if  130<=left_shoulder_angle<=180 and 130<=right_shoulder_angle<=180:
+                        if  110<=left_shoulder_angle<=130 and 160<=right_shoulder_angle<=185:
                         
-                            if 130<=left_elbow_angle<=180 and 130<=right_elbow_angle<=180:
+                            if 120<=left_elbow_angle<=150 and 130<=right_elbow_angle<=180:
                     # Visualize angle
                                 cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                                 mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
@@ -349,7 +362,7 @@ def feedback_bhuj():
             # Recolor back to BGR
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            image = cv2.resize(image,(600,400))
+            image = cv2.resize(image,(1200,600))
             # Extract landmarks
             try:
                 landmarks = results.pose_landmarks.landmark
@@ -431,7 +444,7 @@ def feedback_bhuj():
                     
                        
             except:
-                pass
+                return ""
             cv2.imshow('Mediapipe Feed', image)
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
@@ -440,11 +453,14 @@ def feedback_bhuj():
         cap.release()
         cv2.destroyAllWindows()
 
+    return ""
+
 
 
 
 
 def feedback_virbhadra():
+    print("hellooooo")
     cap = cv2.VideoCapture(0)
 ## Setup mediapipe instance
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
@@ -461,7 +477,7 @@ def feedback_virbhadra():
             # Recolor back to BGR
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            image = cv2.resize(image,(600,400))
+            image = cv2.resize(image,(1200,600))
             # Extract landmarks
             try:
                 landmarks = results.pose_landmarks.landmark
@@ -549,6 +565,7 @@ def feedback_virbhadra():
                        
             except:
                 pass
+
             cv2.imshow('Mediapipe Feed', image)
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
@@ -578,12 +595,14 @@ def feedback_tadasana():
             # Recolor back to BGR
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            image = cv2.resize(image,(600,400))
+            image = cv2.resize(image,(1200,600))
             # Extract landmarks
             try:
                 landmarks = results.pose_landmarks.landmark
-
-                # Get coordinates
+                right_ankle = [landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].y]
+                left_ankle = [landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].y]
+                ankle_distance = calculate_distance(right_ankle, left_ankle) 
+                #Get coordinates
                 right_shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
                 right_hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
                 right_knee = [landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].y]
@@ -601,10 +620,10 @@ def feedback_tadasana():
 
                 right_elbow_angle = calculate_angle(right_shoulder, right_elbow,right_wrist)
                 left_elbow_angle = calculate_angle(left_shoulder,left_elbow,left_wrist)
-                left_shoulder_angle = calculate_angle(left_elbow,left_shoulder,right_shoulder)
-                right_shoulder_angle = calculate_angle(right_elbow,right_shoulder,left_shoulder)
-                left_hip_angle = calculate_angle(left_shoulder, left_hip , left_knee)
-                right_hip_angle = calculate_angle(right_shoulder, right_hip, right_knee)
+                left_shoulder_angle = calculate_angle(left_elbow,left_shoulder,left_hip)
+                right_shoulder_angle = calculate_angle(right_elbow,right_shoulder,right_hip)
+                left_hip_angle = calculate_angle(left_knee, left_hip , right_hip)
+                right_hip_angle = calculate_angle(right_knee, right_hip, left_hip)
                 left_knee_angle = calculate_angle(left_hip,left_knee,left_ankle)
                 right_knee_angle = calculate_angle(right_hip,right_knee,right_ankle)
                 
@@ -614,39 +633,46 @@ def feedback_tadasana():
                 # print(f'right_knee_angle {right_knee_angle}')
                 # print(f'right_shoulder_angle {right_shoulder_angle}')
                 # print(f'left_shoulder_angle {left_shoulder_angle}')
+                print(f'distance {ankle_distance}')
                 
                 
                 
+                if 0.010 <= ankle_distance <= 0.019:
                 
-    #             if 165 <= left_knee_angle <= 185 or 165 <= right_knee_angle <= 185:
-                if 160 <= right_hip_angle <= 185 and 160<=left_hip_angle<=185:
-                    if 60<=right_shoulder_angle<= 95 and 60<= left_shoulder_angle<=95:
-                        cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-                        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
-                    
-                    
+                    if 160 <= right_knee_angle <= 185 and 160<=left_knee_angle<=185:
+                        if 160<=right_shoulder_angle<= 180 and 125<= left_shoulder_angle<=145:
+                            cv2.putText(image,"Perfect", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2, circle_radius=2) )
+                        
                         
                             
-                    else:
-                        cv2.putText(image,"Take your hands up from the side, lock the fingers and stretch you body upward.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                                
+                        else:
+                            cv2.putText(image,"Take your hands up from the side, lock the fingers and stretch you body upward.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                        
+                            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
+                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2)) 
+                            
+                        
+                    else :
+                        
+                        cv2.putText(image,"Make your legs straight.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                    
                     
                         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2)) 
-                        
+                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                else:
+                    cv2.putText(image,"Join your legs.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
                     
-                else :
                     
-                    cv2.putText(image,"Stand straight with your legs joined.", (3,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-                
-                
                     mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                                mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
-                                                mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
-                
-                    
+                                                    mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2), 
+                                                    mp_drawing.DrawingSpec(color=(0,0,255), thickness=2, circle_radius=2))
+                        
             except:
                 pass    
             

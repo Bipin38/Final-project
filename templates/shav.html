@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shavasana</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="aos.css" />
+    <!-- it will load fast so i have pasted in file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+	<style>
+    body {
+      background-color: #ffb3b3;
+      color: black;
+    }
+    
+		.container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      height: 400px;
+    }
+    
+    .left {
+      max-width: 800px;
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    
+    .right {
+      max-width: 800px;
+      width: 100%;
+      height: 500px
+      margin-top: 2rem;
+    }
+    
+    img {
+      max-width: 100%;
+      max-height:600px;
+      padding-left: 135px;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      color:red;
+    }
+    
+    p {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+    
+    ol {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+    }
+    
+    ol li {
+      margin-bottom: 1rem;
+    }
+    
+    .practice-btn {
+      background-color: #60a5fa;
+      border: none;
+      border-radius: 0.25rem;
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease-in-out;
+    }
+    
+    .practice-btn:hover,
+    .practice-btn:focus {
+      background-color: #3b82f6;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    
+      .left {
+        width: 50%;
+        padding-right: 2rem;
+      }
+    
+      .right {
+        width: 50%;
+      }
+    }
+    
+	</style>
+  
+  
+
+</head>
+<body style="background-color: red color: blue;">
+  <div class="navbar navbar-expand-lg fixed-top">
+    <a href="\" class="navbar-brand">Yoga</a>
+    <ul class="navbar-nav ml-lg-auto">
+      <li class="nav-item">
+          <a href="\" class="nav-link smoothScroll">Home</a>
+      </li>
+
+      <li class="nav-item">
+          <a href="\#class" class="nav-link smoothScroll">About</a>
+      </li>
+
+      <li class="nav-item">
+          <a href="\#poses" class="nav-link smoothScroll">Poses</a>
+      </li>
+      
+
+      <li class="nav-item">
+          <a href="\#team" class="nav-link smoothScroll">Our Team</a>
+      </li>
+
+     
+
+      <li class="nav-item">
+          <a href="\#contact" class="nav-link smoothScroll">Contacts</a>
+      </li>
+  </ul>
+
+        
+    </div>
+</div>
+  <div class="container">
+    <div class="left">
+      <h1 style="color:green">Shavasana</h1>
+      <p><strong>Shavasana, also known as Corpse Pose, is a yoga posture that is typically practiced at the end of a yoga class. It is a relaxation pose that aims to calm the body and mind, promoting deep rest and rejuvenation. Shavasana is an essential part of any yoga practice as it provides an opportunity to rest and integrate the benefits of the practice. It helps to reduce stress, anxiety, and tension in the body, and promotes better sleep and overall well-being. It is important to remember that Shavasana is a posture of complete surrender, so try to let go of any expectations or goals, and simply allow yourself to be present and fully relaxed.
+        </strong></p>
+      <h2>How to do it:</h2>
+      <ol>
+        <li>Lie	flat	on	the	back	with	the	arms	about	15	cm	away	from	the	body,	palms	facing	upward.	A	thin
+          pillow	or	folded	cloth	may	be	placed	behind	the	head	to	prevent	discomfort.	Let	the	fingers	curl	up
+          slightly</li>
+        <li>Move	the	feet	slightly	apart	to	a	comfortable	position	and	close	the	eyes.</li>
+        <li>The	head	and	spine	should	be	in	a	straight	line.</li>
+        <li>Make	 sure	 the	 head	 does	 not	 fall	 to	 one	 side	 or	 the	 other.	 Relax	 the	 whole	 body	 and	 stop	 all
+          physical	movement.</li>
+        <li>Become	aware	of	the	natural	breath	and	allow	it	to	become	rhythmic	and	relaxed.</li>
+        <li>After	 some	 time,	 again	 become	 aware	 of	 the	 body	 and	 surroundings,	 and	 gently	 and	 smoothly
+          release	the	posture.</li>
+      </ol>
+      <button class="practice-btn" id="practise-btn" href="{{ url_for('static', filename='statics/pad.html') }}">Practice Now</button>
+      
+    </div>
+    <div class="right">
+      <img src="{{ url_for('static', filename='assets/shavasana.jpeg') }}" alt="Shavasana Pose">
+    </div>
+  </div>
+
+  <script>
+    const practiseBtn = document.getElementById('practise-btn');
+    practiseBtn.addEventListener('click', function() {
+      // Change the URL to '/practise'
+    history.pushState({}, '', '/practiseShav');
+    // Send an AJAX request to your Flask app
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/practiseShav', true);
+    xhr.send();
+});
+
+  </script>
+  
+</body>
+</html>
+
+

@@ -203,10 +203,12 @@ def open_camera():
     start_time = time.time()
     while (time.time() - start_time) < duration:
         ret, frame = cap.read()
+        # image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        image = cv2.resize(frame,(600,400))
         if not ret:
             break
         out.write(frame)
-        cv2.imshow("frame", frame)
+        cv2.imshow("frame", image)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 

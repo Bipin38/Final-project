@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bhujangasana</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="aos.css" />
+    <!-- it will load fast so i have pasted in file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+	<style>
+    body {
+      background-color: #ffb3b3;
+      color: black;
+    }
+    
+		.container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      height: 400px;
+    }
+    
+    .left {
+      max-width: 800px;
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    
+    .right {
+      max-width: 800px;
+      width: 100%;
+      height: 500px
+      margin-top: 2rem;
+    }
+    
+    img {
+      max-width: 100%;
+      max-height:600px;
+      padding-left: 135px;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      color:red;
+    }
+    
+    p {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+    
+    ol {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+    }
+    
+    ol li {
+      margin-bottom: 1rem;
+    }
+    
+    .practice-btn {
+      background-color: #60a5fa;
+      border: none;
+      border-radius: 0.25rem;
+      color: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease-in-out;
+    }
+    
+    .practice-btn:hover,
+    .practice-btn:focus {
+      background-color: #3b82f6;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    
+      .left {
+        width: 50%;
+        padding-right: 2rem;
+      }
+    
+      .right {
+        width: 50%;
+      }
+    }
+    
+	</style>
+  
+  
+
+</head>
+<body style="background-color: red color: blue;">
+  <div class="navbar navbar-expand-lg fixed-top">
+    <a href="\" class="navbar-brand">Yoga</a>
+    <ul class="navbar-nav ml-lg-auto">
+      <li class="nav-item">
+          <a href="\" class="nav-link smoothScroll">Home</a>
+      </li>
+
+      <li class="nav-item">
+          <a href="\#class" class="nav-link smoothScroll">About</a>
+      </li>
+
+      <li class="nav-item">
+          <a href="\#poses" class="nav-link smoothScroll">Poses</a>
+      </li>
+      
+
+      <li class="nav-item">
+          <a href="\#team" class="nav-link smoothScroll">Our Team</a>
+      </li>
+
+     
+
+      <li class="nav-item">
+          <a href="\#contact" class="nav-link smoothScroll">Contacts</a>
+      </li>
+  </ul>
+
+        
+    </div>
+</div>
+  <div class="container">
+    <div class="left">
+      <h1 style="color:green">Bhunjaga Asana</h1>
+      <p><strong>Bhujangasana, also known as Cobra Pose, is a popular yoga posture that is widely practiced in the Eastern world. It is named after the posture of a cobra, with the upper body lifted and the head raised. The pose is believed to activate the energy centers in the body and facilitate spiritual growth and inner awareness. Physically, Bhujangasana is an excellent pose for stretching and strengthening the muscles of the back, shoulders, and chest. It can also help to improve posture and alleviate lower back pain. To practice Bhujangasana, one should lie on their stomach with their hands placed under their shoulders and lift their chest and head while keeping their lower body grounded. Bhujangasana is deeply rooted in Eastern philosophy and tradition and can help practitioners strengthen their body, calm their mind, and tap into the spiritual energy within.
+        </strong></p>
+      <h2>How to do it:</h2>
+      <ol>
+        <li>Keep	the	hands	and	feet	in	place.</li>
+        <li>Slide	 the	 chest	 forward	 and	 raise	 first	 the	 head,	 the	 shoulders,	 then,	 straightening	 the	 elbows,
+          arch	the	back	into	the	cobra	pose.	This	will	lower	the	buttocks	and	hips	to	the	floor.
+          </li>
+        <li>Bend	the	head	back	and	direct	the	gaze	upward	to	the	eyebrow	centre.</li>
+        <li>The	thighs	and	hips	remain	on	the	floor	and	the	arms	support	the	trunk.</li>
+        <li>Unless	the	spine	is	very	flexible	the	arms	will	remain	slightly	bent.</li>
+      </ol>
+      <button class="practice-btn" id="practise-btn">Practice Now</button>
+      
+    </div>
+    <div class="right">
+      <img src="{{ url_for('static', filename='assets/pexels-elina-fairytale-3823076.jpg') }}" alt="Bhungasana Pose">
+    </div>
+  </div>
+
+  <script>
+    const practiseBtn = document.getElementById('practise-btn');
+    practiseBtn.addEventListener('click', function() {
+      // Change the URL to '/practise'
+    history.pushState({}, '', '/practiseBhuj');
+    // Send an AJAX request to your Flask app
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/practiseBhuj', true);
+    xhr.send();
+});
+
+  </script>
+  
+</body>
+</html>
+
+
