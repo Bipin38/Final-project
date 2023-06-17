@@ -17,9 +17,9 @@
 <b>Step 1: </b> Clone the Git repository 
 <br />
 <br/>
-<b>Step 2: </b> ```shell $ pip install -r requirements.txt
+<b>Step 2: </b> <pre>pip install -r requirements.txt</pre>
 <br />
 <br/>
-<b>Step 3: </b>python app.py 
+<b>Step 3: </b>>pre>python app.py</pre> 
 <br/>
 Following these steps should open a web application in your device 
