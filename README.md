@@ -17,7 +17,7 @@
 <b>Step 1: </b> Clone the Git repository 
 <br />
 <br/>
-<b>Step 2: </b> $ pip install -r requirements.txt
+<b>Step 2: </b> ```shell $ pip install -r requirements.txt
 <br />
 <br/>
 <b>Step 3: </b>python app.py 
