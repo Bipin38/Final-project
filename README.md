@@ -20,6 +20,6 @@
 <b>Step 2: </b> <pre>pip install -r requirements.txt</pre>
 <br />
 <br/>
-<b>Step 3: </b>>pre>python app.py</pre> 
+<b>Step 3: </b><pre>python app.py</pre> 
 <br/>
 Following these steps should open a web application in your device 
