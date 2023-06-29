@@ -75,10 +75,9 @@ def extract_keypoints(results):
 
 
 
-no_sequences = 30 
+ 
 
-# Specify the height and width to which each video frame will be resized in our dataset.
-IMAGE_HEIGHT , IMAGE_WIDTH = 64, 64
+
  
 # Specify the number of frames of a video that will be fed to the model as one sequence.
 SEQUENCE_LENGTH = 20
