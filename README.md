@@ -12,7 +12,7 @@
 <br/>
 
 
-#Installation 
+# Installation 
 <br />
 <b>Step 1: </b> Clone the Git repository 
 <br />
