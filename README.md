@@ -6,7 +6,7 @@
 <b>1: Asana Classification </b> The system employs Mediapipe, a comprehensive framework for building multimodal applied machine learning pipelines, to analyze key points and landmarks in real-time video footage of yoga practitioners. By leveraging deep learning models, it accurately identifies and classifies various yoga asanas, including but not limited to standing poses, seated poses, inversions, twists, and balances.
 <br />
 <br/>
-<b> 2: Feedback Generation </b>o assist practitioners in refining their yoga practice, the system compares the angles of the detected joints to a database of optimal angles for each pose. Based on this analysis, it generates personalized feedback to help individuals correct their posture, alignment, and balance.
+<b> 2: Feedback Generation </b> Assist practitioners in refining their yoga practice, the system compares the angles of the detected joints to a database of optimal angles for each pose. Based on this analysis, it generates personalized feedback to help individuals correct their posture, alignment, and balance.
 
 <br />
 <br/>
