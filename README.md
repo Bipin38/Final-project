@@ -1,4 +1,4 @@
-# Yoga Asana Classification and Feedback Generation
+# Yoga Tutor
 <p>This project aims to provide an intelligent system for yoga practitioners to improve their asanas (poses) by automatically classifying their postures and generating valuable feedback based on joint angles. Leveraging the power of machine learning and computer vision techniques, this application utilizes Mediapipe and LSTM (Long Short-Term Memory) algorithms to achieve accurate asana classification and feedback generation. </p><a href= 'https://github.com/Bipin38/Final-project/blob/master/Report.pdf'> Report</a>
 
 ## Features
